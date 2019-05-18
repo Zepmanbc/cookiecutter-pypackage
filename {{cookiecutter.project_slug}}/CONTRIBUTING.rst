@@ -64,11 +64,10 @@ Ready to contribute? Here's how to set up `{{ cookiecutter.project_slug }}` for 
 
     $ git clone git@github.com:your_name_here/{{ cookiecutter.project_slug }}.git
 
-3. Install your local copy into a virtualenv. Assuming you have virtualenvwrapper installed, this is how you set up your fork for local development::
+3. Install your local copy into a virtualenv. Assuming you use pipenv::
 
-    $ mkvirtualenv {{ cookiecutter.project_slug }}
     $ cd {{ cookiecutter.project_slug }}/
-    $ python setup.py develop
+    $ pipenv install --dev
 
 4. Create a branch for local development::
 
@@ -83,7 +82,7 @@ Ready to contribute? Here's how to set up `{{ cookiecutter.project_slug }}` for 
     $ python setup.py test or py.test
     $ tox
 
-   To get flake8 and tox, just pip install them into your virtualenv.
+   To get flake8 and tox, just install them with `pipenv install -r requirements-dev.txt --dev`
 
 6. Commit your changes and push your branch to GitHub::
 
@@ -102,7 +101,7 @@ Before you submit a pull request, check that it meets these guidelines:
 2. If the pull request adds functionality, the docs should be updated. Put
    your new functionality into a function with a docstring, and add the
    feature to the list in README.rst.
-3. The pull request should work for Python 2.7, 3.4, 3.5 and 3.6, and for PyPy. Check
+3. The pull request should work for Python 3.4, 3.5, 3.6 and 3.7, and for PyPy. Check
    https://travis-ci.org/{{ cookiecutter.github_username }}/{{ cookiecutter.project_slug }}/pull_requests
    and make sure that the tests pass for all supported Python versions.
 
@@ -125,6 +124,7 @@ Make sure all your changes are committed (including an entry in HISTORY.rst).
 Then run::
 
 $ bumpversion patch # possible: major / minor / patch
+$ git tag -a v1.4 -m "my version 1.4" # add the tag manualy if you don't use git-flow
 $ git push
 $ git push --tags
 
